@@ -1,3 +1,37 @@
-# Application properties that need to be
-# embedded within the web application can be included here
+cas:
+  server:
+    name: "https://localhost:8443"
+    prefix: https://localhost:8443/cas
 
+  sms-provider:
+    sns:
+      region: us-west-2
+      credential-access-key: ...
+      credential-secret-key: ...
+  authn:
+    mfa:
+      triggers:
+        global:
+          global-provider-id: mfa-simple
+      simple:
+        token:
+          core:
+            time-to-kill-in-seconds: 120
+        mail:
+          from: cas@example.org
+          subject: "CAS MFA Token"
+          text: "Your CAS MFA token is ${token}"
+          attribute-name: email
+        sms:
+          text: "Your CAS MFA token is ${token}"
+          attribute-name: phoneNumber
+
+    passwordless:
+      accounts:
+        json:
+          location: "classpath:passwordless-accounts.json"
+
+spring:
+  mail:
+    host: localhost
+    port: 25000

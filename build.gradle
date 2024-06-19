@@ -256,6 +256,11 @@ dependencies {
     implementation enforcedPlatform("org.apereo.cas:cas-server-support-bom:${project.'cas.version'}")
     implementation platform(org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES)
 
+
+    implementation "org.apereo.cas:cas-server-support-simple-mfa"
+    implementation "org.apereo.cas:cas-server-support-sms-aws-sns"
+    implementation "org.apereo.cas:cas-server-support-passwordless-webflow"
+
     /**
      * Do NOT modify the lines below or else you will risk breaking the build.
      **/
