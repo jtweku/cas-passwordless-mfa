@@ -9,6 +9,11 @@ cas:
       credential-access-key: ...
       credential-secret-key: ...
   authn:
+    attribute-repository:
+      stub:
+        attributes:
+          email: casuser@example.org
+          phoneNumber: +1347746453
     mfa:
       triggers:
         global:
@@ -20,7 +25,7 @@ cas:
         mail:
           from: cas@example.org
           subject: "CAS MFA Token"
-          text: "Your CAS MFA token is ${token}"
+          text: "Your CAS MFA token is ${tokenWithoutPrefix}"
           attribute-name: email
         sms:
           text: "Your CAS MFA token is ${token}"
